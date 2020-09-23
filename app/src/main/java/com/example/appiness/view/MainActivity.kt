@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         initialise()
 
     }
+
     private fun initialise() {
         setContentView(R.layout.activity_main)
         main_recycler_view.layoutManager =
@@ -46,9 +47,11 @@ class MainActivity : AppCompatActivity() {
                                 it.data!!, LayoutInflater.from(MainActivity@ this)
                             )
                         else {
-
-                            Toast.makeText(applicationContext, "No Data found in DB search in webserver", Toast.LENGTH_LONG)
-                                .show()
+                            Toast.makeText(
+                                applicationContext,
+                                "No Data found in DB search in webserver",
+                                Toast.LENGTH_LONG
+                            ).show()
                             mainActivityViewModel.getList(editText.text.toString().trim(), true)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
@@ -83,7 +86,11 @@ class MainActivity : AppCompatActivity() {
                         )
                     else {
                         mainActivityViewModel.getList(editText.text.toString().trim(), false)
-                        Toast.makeText(applicationContext, "No Data found in server", Toast.LENGTH_LONG)
+                        Toast.makeText(
+                            applicationContext,
+                            "No Data found in server",
+                            Toast.LENGTH_LONG
+                        )
                             .show()
                     }
                 }
